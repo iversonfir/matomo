@@ -226,6 +226,18 @@
                         self._showNoMoreVisitsSpan();
                     }
 
+                    var numbers = $('[data-number]');
+                    var max = $(numbers[0]).data('number');
+
+                    if (numbers.length > max) {
+                        var counter = numbers.length;
+                        numbers.each(function() {
+                            $(this).attr('data-number', counter);
+                            $('.counter', this).text(counter);
+                            counter--;
+                        });
+                    }
+
                     piwikHelper.lazyScrollTo($(response)[0], 400, true);
                 }
             });
